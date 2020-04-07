@@ -2,10 +2,14 @@
 /* color variables */
 /* ~~~~~~~~~~~~~~ */
 :root {
-  --primaryColor: #444444;
+  /* --primaryColor: #444444;
   --secondaryColor: #ffdd67;
-  --tertiaryColor: rgb(83, 89, 69);
+  --tertiaryColor: rgb(83, 89, 69); */
   --rainbow: linear-gradient(-45deg, red, orange, yellow, green, blue, indigo, violet);
+  --primaryColor: #2a7e90;
+  --secondaryColor: #165120;
+  --tertiaryColor: #031138;
+  --quaternaryColor: #013c40;
 }
 
 * {
@@ -18,13 +22,103 @@ body {
   padding: 0;
 }
 
-.content {
+ul {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: calc(50% - 10rem);
+  left: calc(50% - 10rem);
   transform: translate(-50%, -50%);
-  width: 30rem;
-  height: 30rem;
-  background: var(--rainbow);
+  width: 20rem;
+  height: 20rem;
+  transform: rotate(45deg);
+  /* background: var(--rainbow); */
+  border-radius: 4%;
+}
+
+ul li {
+  list-style: none;
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  float: left;
+
+}
+
+ul li:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 100% 100%;
+  animation: animate 3.3s linear infinite;
   border-radius: 5%;
+}
+
+ul li:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+ul li:nth-child(1):before {
+  animation-delay: 0s;
+  background: #2a7e90;
+}
+
+ul li:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+ul li:nth-child(2):before {
+  animation-delay: 0.4s;
+  background: #165120;
+}
+
+ul li:nth-child(3) {
+  transform: rotate(270deg);
+}
+
+ul li:nth-child(3):before {
+  animation-delay: 1.2s;
+  background: #031138;
+}
+
+ul li:nth-child(4) {
+  transform: rotate(180deg);
+}
+
+ul li:nth-child(4):before {
+  animation-delay: 2s;
+  background: #013c40;
+}
+
+@keyframes animate {
+  0% {
+    transform: perspective(200px) rotateX(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    transform: perspective(200px) rotateX(-180deg);
+    opacity: 0;
+  }
+
+  25% {
+    transform: perspective(200px) rotateX(0deg);
+    opacity: 1;
+  }
+
+  75% {
+    transform: perspective(200px) rotateX(0deg);
+    opacity: 1;
+  }
+
+  90% {
+    transform: perspective(200px) rotateY(180deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(200px) rotateY(0deg);
+    opacity: 0;
+  }
 }
